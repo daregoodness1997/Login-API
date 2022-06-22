@@ -1,0 +1,11 @@
+{
+  "name": "login-api",
+  "version": "1.0.0",
+  "description": "API Implemetation of Login API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dare Goodness",
+  "license": "ISC"
+}
