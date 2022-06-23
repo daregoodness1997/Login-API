@@ -3,9 +3,14 @@ require('express-async-errors');
 
 const express = require('express');
 const app = express();
+const passport = require('passport');
+const session = require('express-session');
 // connect DB to
 const connectDB = require('./db/connect');
 const morgan = require('morgan');
+
+// Passport Config
+// require('./config/passport')(passport);
 
 // routers
 const authRouter = require('./routes/auth');
@@ -24,10 +29,22 @@ const rateLimiter = require('express-rate-limit');
 app.set('trust proxy', 1);
 app.use(rateLimiter({ windowMs: 15 * 60 * 1000, max: 100 }));
 
+// Sessions
+app.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
 app.use(express.json());
 app.use(helmet());
 app.use(cors());
 app.use(xss());
+// Passport middlewares
+
+app.use(passport.initialize());
 
 // logging
 if (process.env.NODE_ENV === 'development') {
