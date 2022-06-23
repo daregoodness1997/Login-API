@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const { loginUser, registerUser } = require('../controller/auth');
+const { ensureGuest } = require('../middleware/authentication');
 
-router.route('/login').get(loginUser);
+router.route('/login').get(ensureGuest, loginUser);
 router.route('/register').get(registerUser);
 
 // @desc Auth with Google

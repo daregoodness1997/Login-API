@@ -47,6 +47,8 @@ app.use(xss());
 
 app.use(passport.initialize());
 
+// auth middleware
+const { ensureAuth, ensureGuest } = require('./middleware/authentication');
 // logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
