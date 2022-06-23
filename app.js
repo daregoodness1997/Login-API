@@ -7,6 +7,9 @@ const app = express();
 const connectDB = require('./db/connect');
 const morgan = require('morgan');
 
+// routers
+const authRouter = require('./routes/auth');
+
 // middlewares
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
@@ -30,6 +33,9 @@ app.use(xss());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+// routes
+app.use('/api/v1/auth', authRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
