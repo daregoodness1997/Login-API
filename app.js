@@ -10,10 +10,11 @@ const connectDB = require('./db/connect');
 const morgan = require('morgan');
 
 // Passport Config
-// require('./config/passport')(passport);
+require('./config/passport')(passport);
 
 // routers
 const authRouter = require('./routes/auth');
+const dashboardRouter = require('./routes/dashboard');
 
 // middlewares
 const notFoundMiddleware = require('./middleware/not-found');
@@ -53,6 +54,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // routes
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/dashboard', dashboardRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
