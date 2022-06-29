@@ -20,6 +20,9 @@ const dashboardRouter = require('./routes/dashboard');
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
+// auth middleware
+const { ensureAuth, ensureGuest } = require('./middleware/authentication');
+
 // extra security packages require
 const helmet = require('helmet');
 const cors = require('cors');
@@ -47,14 +50,16 @@ app.use(xss());
 
 app.use(passport.initialize());
 
-// auth middleware
-const { ensureAuth, ensureGuest } = require('./middleware/authentication');
 // logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
 // routes
+
+app.get('/', () => {
+  res.send('Login API');
+});
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/dashboard', dashboardRouter);
 
