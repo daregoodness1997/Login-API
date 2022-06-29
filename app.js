@@ -57,7 +57,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // routes
 
-app.get('/', () => {
+app.get('/', (req, res) => {
   res.send('Login API');
 });
 app.use('/api/v1/auth', authRouter);
