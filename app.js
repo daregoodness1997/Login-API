@@ -33,6 +33,11 @@ const rateLimiter = require('express-rate-limit');
 app.set('trust proxy', 1);
 app.use(rateLimiter({ windowMs: 15 * 60 * 1000, max: 100 }));
 
+app.use(express.json());
+app.use(helmet());
+app.use(cors());
+app.use(xss());
+
 // Sessions
 app.use(
   session({
@@ -41,12 +46,9 @@ app.use(
     saveUninitialized: false,
   })
 );
-
-app.use(express.json());
-app.use(helmet());
-app.use(cors());
-app.use(xss());
 // Passport middlewares
+app.use(passport.session());
+app.use(passport.initialize());
 
 app.use(passport.initialize());
 

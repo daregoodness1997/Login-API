@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const { loginUser, registerUser } = require('../controller/auth');
+const { loginUser, registerUser, logoutUser } = require('../controller/auth');
 const { ensureGuest } = require('../middleware/authentication');
 
 router.route('/login').get(ensureGuest, loginUser);
@@ -21,5 +21,10 @@ router
       res.redirect('/api/v1/dashboard');
     }
   );
+
+//@desc logout user
+// @route /auth/logout
+
+router.route('/logout').get(logoutUser);
 
 module.exports = router;
