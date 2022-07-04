@@ -38,7 +38,7 @@ app.use(helmet());
 app.use(cors());
 app.use(xss());
 
-// Sessions
+// Sessions Middlewares
 app.use(
   session({
     secret: 'keyboard cat',
