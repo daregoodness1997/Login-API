@@ -5,7 +5,7 @@ const { loginUser, registerUser, logoutUser } = require('../controller/auth');
 const { ensureGuest } = require('../middleware/authentication');
 
 router.route('/login').get(ensureGuest, loginUser);
-router.route('/register').get(registerUser);
+router.route('/register').post(registerUser);
 
 // @desc Auth with Google
 // @route GET /auth/google
