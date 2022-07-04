@@ -57,6 +57,11 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+// All
+app.all('/*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 // routes
 
 app.get('/', (req, res) => {

@@ -12,13 +12,15 @@ module.exports = function (passport) {
         callbackURL: '/api/v1/auth/google/callback',
       },
       async (accessToken, refreshToken, profile, done) => {
-        console.log(profile);
+        // console.log(profile);
+        // console.log('email', profile.emails[0].value);
         const newUser = {
           googleId: profile.id,
           displayName: profile.displayName,
           firstName: profile.name.givenName,
           lastName: profile.name.familyName,
           image: profile.photos[0].value,
+          email: profile.emails[0].value,
         };
 
         try {

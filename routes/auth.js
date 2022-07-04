@@ -12,7 +12,9 @@ router.route('/register').post(registerUser);
 
 router
   .route('/google')
-  .get(passport.authenticate('google', { scope: ['profile'] }));
+  .get(
+    passport.authenticate('google', { scope: ['openid ', 'email', 'profile'] })
+  );
 router
   .route('/google/callback')
   .get(

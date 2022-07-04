@@ -6,7 +6,7 @@ const loginUser = async (req, res) => {
 };
 
 const googleLogin = async (req, res) => {
-  passport.authenticate('google', { scope: ['profile'] });
+  passport.authenticate('google', { scope: ['eamil', 'profile'] });
 };
 
 const googleCallback = async (req, res, next) => {
