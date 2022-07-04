@@ -14,7 +14,7 @@ const googleCallback = async (req, res, next) => {
   next();
 };
 const registerUser = async (req, res) => {
-  const user = await User.create(body);
+  const user = await User.create(req.body);
   res.status(200).json({ user });
 };
 
