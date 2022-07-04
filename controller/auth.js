@@ -1,4 +1,6 @@
 const passport = require('passport');
+const User = require('../models/Users');
+
 const loginUser = async (req, res) => {
   res.json('User logged in');
 };
@@ -12,7 +14,8 @@ const googleCallback = async (req, res, next) => {
   next();
 };
 const registerUser = async (req, res) => {
-  res.send('User logged in');
+  const user = await User.create(body);
+  res.status(200).json({ user });
 };
 
 const logoutUser = async (req, res) => {
