@@ -26,6 +26,7 @@
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
+    "passport-twitter-oauth2": "^2.1.1",
     "rate-limiter": "^0.2.0",
     "xss-clean": "^0.1.1"
   },
