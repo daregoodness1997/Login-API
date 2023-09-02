@@ -1,5 +1,5 @@
 const dashboard = async (req, res) => {
-  res.send('Dashboard');
+  res.send(`Welcome ${req.user.email}`);
 };
 
 module.exports = { dashboard };
